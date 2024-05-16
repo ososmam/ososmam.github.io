@@ -3,8 +3,12 @@ import { Box, Button, styled, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 //img
 import headerImg from "../assets/WebHeader.png";
+import { useTheme } from "@mui/material";
+import { tokens } from "../theme";
 
 const Header = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const CustomBox = styled(Box)(({ theme }) => ({
     minHeight: "80vh",
     display: "flex",
@@ -13,7 +17,7 @@ const Header = () => {
     gap: theme.spacing(2),
     paddingTop: theme.spacing(10),
     // cor de fundo
-    backgroundColor: "#414141",
+    backgroundColor: colors.grey[800],
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -41,7 +45,7 @@ const Header = () => {
           component="h1"
           sx={{
             fontWeight: 700,
-            color: "#fff",
+            color: colors.primary[100],
           }}
         >
           Your gate to Entertainment.
@@ -53,7 +57,7 @@ const Header = () => {
           sx={{
             py: 3,
             lineHeight: 1.6,
-            color: "#fff",
+            color: colors.primary[100],
           }}
         >
           Welcome to your one-stop shop for instant entertainment

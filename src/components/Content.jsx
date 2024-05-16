@@ -17,10 +17,15 @@ import { PublishTwoTone } from '@mui/icons-material';
 // components
 import Title from './Title'
 import Paragraph from './Paragraph'
+import { useTheme } from "@mui/material";
+import { tokens } from "../theme";
 
 
 const Content = () => {
-  return (    
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+  return ( 
+       
         <Grid container spacing={0}   
         sx={{
             display: 'flex',
@@ -73,6 +78,7 @@ const Content = () => {
                     alignItems: 'center',
                     textAlign: 'center',
                     border: '1px solid #ccc',
+                    
                 }}>
                     <CardContent>
                         <IconButton>
@@ -104,7 +110,9 @@ const Content = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center', 
-                    border: '1px solid #ccc'
+                    border: '1px solid #ccc',
+                    
+                    
                 }}>
                     <CardContent>
                         <IconButton>
@@ -131,7 +139,7 @@ const Content = () => {
                 display: {xs: 'none', sm: 'block'},
             }}  
             >
-                <Card 
+                {/* <Card 
                 square={ true }
                 sx={{ 
                     boxShadow: 'none',
@@ -141,13 +149,15 @@ const Content = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center',
+                    
+                    bgcolor: "transparent",
                 }}>
                     <CardContent>
                         <ArrowCircleRightRoundedIcon
                         fontSize="large"
                         color="secondary" />
                     </CardContent>
-                </Card>
+                </Card> */}
             </Grid>
 
             <Grid item xs={12} sm={6} md={3}>    
@@ -160,7 +170,9 @@ const Content = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center', 
-                    border: '1px solid #ccc'
+                    border: '1px solid #ccc',
+                    
+                    
                 }}>
                     <CardContent>
                         <IconButton>
@@ -193,6 +205,8 @@ const Content = () => {
                     alignItems: 'center',
                     textAlign: 'center',                    
                     border: '1px solid #ccc',
+                    
+                    
                 }}
                 >
                     <CardContent>
@@ -226,6 +240,8 @@ const Content = () => {
                     alignItems: 'center',
                     textAlign: 'center', 
                     border: '1px solid #ccc',
+                    
+                    
                 }}>
                     <CardContent>
                         <IconButton>

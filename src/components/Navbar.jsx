@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext }  from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,14 +9,19 @@ import {
   styled,
   ListItemButton,
   ListItemText,
+  IconButton,
 } from "@mui/material";
-
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DrawerItem from "./DrawerItem";
 
 import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.png";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+import { useTheme } from "@mui/material";
+import { ColorModeContext, tokens } from "../theme";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -46,13 +51,16 @@ const itemList = [
 ];
 
 const Navbar = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   return (
     <AppBar
       component="nav"
       position="sticky"
       sx={{
-        backgroundColor: "#414141",
+        backgroundColor: colors.grey[800],
       }}
       elevation={0}
     >
@@ -69,7 +77,11 @@ const Navbar = () => {
                 }}
               />
 
-              <Typography variant="h6" component="h2">
+              <Typography
+                variant="h6"
+                component="h2"
+                color={colors.primary[100]}
+              >
                 Taslia Studio
               </Typography>
             </Box>
@@ -87,7 +99,11 @@ const Navbar = () => {
                 }}
               />
 
-              <Typography variant="h6" component="h2">
+              <Typography
+                variant="h6"
+                component="h2"
+                color={colors.primary[100]}
+              >
                 Taslia Studio
               </Typography>
             </Box>
@@ -105,10 +121,10 @@ const Navbar = () => {
                   component={Link}
                   to={item.to}
                   sx={{
-                    color: "#fff",
+                    color: colors.primary[100],
                     "&:hover": {
                       backgroundColor: "transparent",
-                      color: "#1e2a5a",
+                      color: colors.redAccent[600],
                     },
                   }}
                 >
@@ -117,6 +133,15 @@ const Navbar = () => {
               </ListItem>
             );
           })}
+          <ListItem>
+            <IconButton onClick={colorMode.toggleColorMode}>
+              {theme.palette.mode === "dark" ? (
+                <DarkModeOutlinedIcon />
+              ) : (
+                <LightModeOutlinedIcon />
+              )}
+            </IconButton>
+          </ListItem>
         </ListMenu>
       </StyledToolbar>
     </AppBar>

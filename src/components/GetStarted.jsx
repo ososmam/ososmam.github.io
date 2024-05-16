@@ -3,8 +3,14 @@ import { Box, Button, Grid, styled, Typography } from "@mui/material";
 import Title from "./Title";
 // img
 import imgDetail from "../assets/ColorHexweb.png";
+import { useTheme } from "@mui/material";
+import { tokens } from "../theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const GetStarted = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:600px)");
   const CustomGridItem = styled(Grid)({
     display: "flex",
     flexDirection: "column",
@@ -15,7 +21,7 @@ const GetStarted = () => {
     fontSize: "1.1rem",
     textAlign: "start",
     lineHeight: "1.5",
-    color: "#515151",
+    color: colors.grey[400],
     marginTop: "1.5rem",
   });
 
@@ -53,15 +59,15 @@ const GetStarted = () => {
               py: 1,
               fontSize: "0.9rem",
               textTransform: "capitalize",
-              borderRadius: 0,
-              borderColor: "#14192d",
-              color: "#fff",
-              backgroundColor: "#14192d",
+              borderRadius: 0.5,
+              borderColor: colors.redAccent[600],
+              color: colors.primary[100],
+              backgroundColor: colors.redAccent[500],
               "&&:hover": {
-                backgroundColor: "#343a55",
+                backgroundColor: colors.redAccent[300],
               },
               "&&:focus": {
-                backgroundColor: "#343a55",
+                backgroundColor: colors.redAccent[300],
               },
             }}
           >
@@ -75,8 +81,8 @@ const GetStarted = () => {
           src={imgDetail}
           alt=""
           style={{
-            width: "60%",
-            padding: "40",
+            width:isNonMobile? "65%":"100%",
+            padding: "50",
           }}
         />
       </Grid>

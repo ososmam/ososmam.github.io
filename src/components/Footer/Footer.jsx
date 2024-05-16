@@ -5,7 +5,12 @@ import FooterTitle from "./FooterTitle";
 import FooterLink from "./FooterLink";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import { useTheme } from "@mui/material";
+import { tokens } from "../../theme";
+
 const Footer = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const StackColumn = styled(Stack)(() => ({
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -18,7 +23,7 @@ const Footer = () => {
   const BoxRow = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "row",
-    backgroundColor: "#ededed",
+    backgroundColor: colors.grey[800],
     flex: 1,
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
@@ -29,7 +34,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#ededed",
+        backgroundColor: colors.grey[800],
         textAlign: "center", // Align text in the middle of the page
         padding: "20px", // Add padding to the footer
       }}
@@ -73,7 +78,7 @@ const Footer = () => {
               href="https://play.google.com/store/apps/dev?id=7583585392299884953"
               variant="body2"
               sx={{
-                color: "#414141",
+                color: colors.grey[400],
                 "&:hover": {
                   color: "#43a047",
                 },
@@ -85,7 +90,7 @@ const Footer = () => {
               href="https://www.facebook.com/TasliaStudio"
               variant="body2"
               sx={{
-                color: "#414141",
+                color: colors.grey[400],
                 "&:hover": {
                   color: "#1c2859",
                 },

@@ -3,8 +3,12 @@ import { Button, Stack } from "@mui/material";
 import Title from "./Title";
 import Paragraph from "./Paragraph";
 import { Link } from "react-router-dom";
+import { useTheme } from "@mui/material";
+import { tokens } from "../theme";
 
 const GetInTouch = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   return (
     <Stack
       component="section"
@@ -38,10 +42,15 @@ const GetInTouch = () => {
           px: 4,
           mt: 3,
           mb: 2,
-          borderRadius: 0,
-          backgroundColor: "#14192d",
-          "&:hover": {
-            backgroundColor: "#1e2a5a",
+          borderRadius: 0.5,
+          borderColor: colors.redAccent[600],
+          color: colors.primary[100],
+          backgroundColor: colors.redAccent[500],
+          "&&:hover": {
+            backgroundColor: colors.redAccent[300],
+          },
+          "&&:focus": {
+            backgroundColor: colors.redAccent[300],
           },
         }}
       >
